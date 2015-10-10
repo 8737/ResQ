@@ -27,8 +27,8 @@ public class TeslaBotTeleOp extends TeslaBotHardwareBase {
         double drive_speed = -gamepad1.left_stick_y;
         double turn_speed  = gamepad1.right_stick_x;
 
-        telemetry.addData("Drive Speed",drive_speed);
-        telemetry.addData("Turn Speed",turn_speed);
+        telemetry.addData("Drive Speed", drive_speed);
+        telemetry.addData("Turn Speed", turn_speed);
 
         drive(drive_speed,turn_speed); //Drive the robot.
     }
