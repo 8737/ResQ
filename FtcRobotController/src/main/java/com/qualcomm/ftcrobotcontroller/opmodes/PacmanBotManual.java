@@ -10,7 +10,7 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
  */
 public class PacmanBotManual extends PacmanBotHardwareBase {
 
-    public final VersionNumber version = new VersionNumber(1,0,0);
+    public final VersionNumber version = new VersionNumber(1,0,1);
 
     @Override
     public void init() {
