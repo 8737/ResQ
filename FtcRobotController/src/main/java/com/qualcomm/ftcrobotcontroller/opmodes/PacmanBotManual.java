@@ -5,12 +5,13 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
  * This class implements the top-level PacmanBot driving mechanics.
  *
  * Change log:
+ * 1.1.0 - Added exponential forward drive.
  * 1.0.1 - Fixed brush power bug.
  * 1.0.0 - First version.
  */
 public class PacmanBotManual extends PacmanBotHardwareBase {
 
-    public final VersionNumber version = new VersionNumber(1,0,1);
+    public final VersionNumber version = new VersionNumber(1,1,0);
 
     @Override
     public void init() {
@@ -19,6 +20,7 @@ public class PacmanBotManual extends PacmanBotHardwareBase {
         telemetry.addData("Hardware Base Version",hwbVersion.string());
 
         setupHardware();
+        setDriveExponent(2.0);
     }
 
     @Override
