@@ -119,10 +119,13 @@ public class PacmanBotHardwareBase extends OpMode {
         rearRight = hardwareMap.dcMotor.get("rear_right");
         brush = hardwareMap.dcMotor.get("brush");
         deviceMode = DcMotorController.DeviceMode.WRITE_ONLY;
+
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         frontRight.setDirection(DcMotor.Direction.FORWARD);
+
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
+
         brush.setDirection(DcMotor.Direction.FORWARD);
         brush.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
         frontLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
