@@ -1,0 +1,57 @@
+---- PacmanBotHardwareBase Documentation ----
+             Thomas Doylend
+
+The PacmanBotHardwareBase provides hardware abstraction and useful functions for the
+PacmanBot. It is an extension of OpMode, which means that in order to use it you
+must override it in turn:
+
+public class MyOpMode extends PacmanBotHardwareBase {
+    //Do stuff
+}
+
+Before you use any of the HardwareBase's capabilities, you must initialize it by calling
+setupHardware(). This sets up the robot and initializes the gamepad tracker. A great place
+to call setupHardware is the init() method.
+
+Normally, Driver 1 controls the entire robot. Driver 2's gamepad is disabled to prevent
+accidental button presses or stick jitter from affecting the robot. However, should it
+be necessary, Driver 2 can take over by double-pressing Start. A variable called 'gamepad'
+holds the current gamepad in use. The checkUsers() function performs driver override if
+necessary, and it should be called in loop().
+
+The HardwareBase provides a variable called hwbVersion. This holds the current version
+of the hardware base. You can obtain its value as a string for telemetry by calling
+hwbVersion.string().
+
+Because the color sensor is being used to detect the beacon, its output can have only
+three possible useful states: Red, Blue, or Neither. An enum called ColorDetected
+provides these constants.
+
+The following functions are provided:
+
+public void setDriveClamp(double value)     Set the initial drive clamp to value.
+public void setTurnClamp(double value)      Set the initial turn clamp to value.
+public void setDriveExponent(double value)  Set the drive exponential curve to value.
+public void setTurnExponent(double value)   Set the turn exponential curve to value.
+public void setDriveMultiplier(double value)Set the drive multiplier to value.
+public void setTurnMultiplier(double value) Set the turn multiplier to value.
+public void setMotorExponent(double value)  Set the exponential curve for each motor to value.
+public void setFinalRateMultiplier(double value)  Set the multiplier for each motor to value.
+
+public void drive(double drive_rate, double turn_rate)
+        Drive the robot. drive_rate indicates the forward speed, while turn_rate indicates the
+        rotational speed. The sign of drive_rate indicates the direction to go; the sign of
+        turn_rate indicates whether to turn left or right.
+
+public void setBrushPower(double power) Set the game element brush power to power.
+
+public ColorDetected getEyeColor()
+        Obtain the current color that the eye is seeing. Returns
+        COLOR_RED, COLOR_BLUE, or COLOR_NEITHER.
+
+public String getColorString(ColorDetected color) Return a string value for color.
+
+public void setEyeLED(boolean active) Turn the eye LED on or off.
+
+public void setupHardware() Set up the robot and controls.
+public void checkUsers() Handle Driver 2 override if necessary.

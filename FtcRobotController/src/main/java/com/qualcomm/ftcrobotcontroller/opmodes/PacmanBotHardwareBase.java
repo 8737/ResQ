@@ -151,7 +151,7 @@ public class PacmanBotHardwareBase extends OpMode {
     public void loop() {}
 
     public void checkUsers() {
-        if (gamepad2.left_bumper) gamepadOverride++;
+        if (gamepad2.start) gamepadOverride++;
         if (gamepadOverride == 2) gamepad = gamepad2;
     }
 }
