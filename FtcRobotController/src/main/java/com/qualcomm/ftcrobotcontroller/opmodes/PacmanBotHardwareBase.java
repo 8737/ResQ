@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
+import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by tdoylend on 2015-10-22.
@@ -30,6 +32,9 @@ public class PacmanBotHardwareBase extends OpMode {
     DcMotor frontRight;
     DcMotor rearLeft;
     DcMotor rearRight;
+
+    Gamepad gamepad;
+    int gamepadOverride=0;
 
     DcMotor brush;
 
@@ -110,6 +115,10 @@ public class PacmanBotHardwareBase extends OpMode {
         return value;
     }
 
+    public void setWiperPower(double value){
+        //Does nothing. Will eventually control wiper.
+    }
+
     public void setupHardware() {
         frontController = hardwareMap.dcMotorController.get("front_ctrl");
         rearController  = hardwareMap.dcMotorController.get("rear_ctrl");
@@ -132,6 +141,8 @@ public class PacmanBotHardwareBase extends OpMode {
 
         eye = hardwareMap.colorSensor.get("eye");
         setEyeLED(false);
+
+        gamepad = gamepad1;
     }
 
     @Override
@@ -139,4 +150,8 @@ public class PacmanBotHardwareBase extends OpMode {
     @Override
     public void loop() {}
 
+    public void checkUsers() {
+        if (gamepad2.left_bumper) gamepadOverride++;
+        if (gamepadOverride == 2) gamepad = gamepad2;
+    }
 }
