@@ -22,6 +22,9 @@ public class PacmanBotHardwareBase extends OpMode {
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
 
+    final static double WINCH_RATE = 1.0;
+    final static double HOOK_RATE = 0.25;
+
     public enum ColorDetected {COLOR_RED,COLOR_BLUE,COLOR_NEITHER}
 
     DcMotorController.DeviceMode deviceMode;
@@ -32,6 +35,9 @@ public class PacmanBotHardwareBase extends OpMode {
     DcMotor frontRight;
     DcMotor rearLeft;
     DcMotor rearRight;
+
+    DcMotor winch;
+    DcMotor hook;
 
     Gamepad gamepad;
     int gamepadOverride=0;
@@ -139,10 +145,21 @@ public class PacmanBotHardwareBase extends OpMode {
         rearLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
         rearRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
 
+        winch = hardwareMap.dcMotor.get("winch");
+        hook  = hardwareMap.dcMotor.get("hook");
+
         eye = hardwareMap.colorSensor.get("eye");
         setEyeLED(false);
 
         gamepad = gamepad1;
+    }
+
+    public setHookPower(double power) {
+        hook.setPower(HOOK_POWER * power);
+    }
+
+    public setWinchPower(double power) {
+        winch.setPower(WINCH_POWER * power);
     }
 
     @Override
