@@ -6,6 +6,7 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
  * Change log:
  * 1.0.0 - First version.
  */
+
 public class PacmanBotManual2 extends PacmanBotHardwareBase {
     final static VersionNumber version = new VersionNumber(1,0,0);
 

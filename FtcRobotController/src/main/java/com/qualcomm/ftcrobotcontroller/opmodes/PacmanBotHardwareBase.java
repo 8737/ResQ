@@ -39,8 +39,11 @@ public class PacmanBotHardwareBase extends OpMode {
     DcMotor winch;
     DcMotor hook;
 
+    Servo sweeper;
+
     Gamepad gamepad;
     int gamepadOverride=0;
+    boolean gamepadAllower=true;
 
     DcMotor brush;
 
@@ -121,10 +124,6 @@ public class PacmanBotHardwareBase extends OpMode {
         return value;
     }
 
-    public void setWiperPower(double value){
-        //Does nothing. Will eventually control wiper.
-    }
-
     public void setupHardware() {
         frontController = hardwareMap.dcMotorController.get("front_ctrl");
         rearController  = hardwareMap.dcMotorController.get("rear_ctrl");
@@ -152,6 +151,12 @@ public class PacmanBotHardwareBase extends OpMode {
         setEyeLED(false);
 
         gamepad = gamepad1;
+
+        sweeper = hardwareMap.servo.get("sweeper");
+    }
+
+    public void setSweeperPosition(double power) {
+        sweeper.setPosition(power/70.0);
     }
 
     public void setHookPower(double power) {
@@ -174,7 +179,13 @@ public class PacmanBotHardwareBase extends OpMode {
     public void loop() {}
 
     public void checkUsers() {
-        if (gamepad2.start) gamepadOverride++;
+        if (gamepadAllower) {
+            if (gamepad2.start) {
+                gamepadOverride++;
+                gamepadAllower=false;
+            }
+        }
+        if (!gamepad2.start) gamepadAllower=true;
         if (gamepadOverride == 2) gamepad = gamepad2;
     }
 }
