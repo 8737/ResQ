@@ -17,6 +17,8 @@ public class PacmanBotManual2 extends PacmanBotHardwareBase {
         telemetry.addData("Hardware Base Version", hwbVersion.string());
 
         setupHardware();
+
+        setSweeperPosition(0);
     }
 
     @Override
@@ -33,6 +35,9 @@ public class PacmanBotManual2 extends PacmanBotHardwareBase {
 
         //Adjust the eye LED. Remove this during tournament; for testing purposes only.
         setEyeLED(gamepad.start);
+
+        if (gamepad.dpad_left) setSweeperPosition(0);
+        if (gamepad.dpad_right) setSweeperPosition(1);
 
         //Now for telemetry
 

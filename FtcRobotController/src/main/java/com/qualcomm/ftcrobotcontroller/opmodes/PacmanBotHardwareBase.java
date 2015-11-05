@@ -156,7 +156,7 @@ public class PacmanBotHardwareBase extends OpMode {
     }
 
     public void setSweeperPosition(double power) {
-        sweeper.setPosition(power/70.0);
+        sweeper.setPosition(power*70.0);
     }
 
     public void setHookPower(double power) {
