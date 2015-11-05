@@ -55,3 +55,5 @@ public void setEyeLED(boolean active) Turn the eye LED on or off.
 
 public void setupHardware() Set up the robot and controls.
 public void checkUsers() Handle Driver 2 override if necessary.
+
+public double threeWay(boolean a, boolean b) Implements a 3-way switch. Returns -1, 0, or 1.
