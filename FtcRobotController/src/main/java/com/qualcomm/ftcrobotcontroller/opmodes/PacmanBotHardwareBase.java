@@ -162,6 +162,12 @@ public class PacmanBotHardwareBase extends OpMode {
         winch.setPower(WINCH_RATE * power);
     }
 
+    public double threeWay(boolean a,boolean b) {
+        if (a) return -1.0;
+        if (b) return 1.0;
+        return 0;
+    }
+
     @Override
     public void init() {}
     @Override

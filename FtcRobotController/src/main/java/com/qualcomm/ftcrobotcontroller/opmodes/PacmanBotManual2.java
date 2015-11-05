@@ -27,6 +27,9 @@ public class PacmanBotManual2 extends PacmanBotHardwareBase {
         double turn_rate  = gamepad.right_stick_x;
         drive(drive_rate,turn_rate);
 
+        setHookPower(threeWay(gamepad.left_bumper,gamepad.left_trigger>.5));
+        setWinchPower(threeWay(gamepad.right_bumper,gamepad.right_trigger>.5));
+
         //Adjust the eye LED. Remove this during tournament; for testing purposes only.
         setEyeLED(gamepad.start);
 
@@ -34,5 +37,6 @@ public class PacmanBotManual2 extends PacmanBotHardwareBase {
 
         telemetry.addData("Manual Drive","Standard");
         telemetry.addData("Eye Sees",getColorString(getEyeColor()));
+        telemetry.addData("Left Trigger",gamepad.left_trigger);
     }
 }
