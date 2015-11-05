@@ -154,12 +154,12 @@ public class PacmanBotHardwareBase extends OpMode {
         gamepad = gamepad1;
     }
 
-    public setHookPower(double power) {
-        hook.setPower(HOOK_POWER * power);
+    public void setHookPower(double power) {
+        hook.setPower(HOOK_RATE * power);
     }
 
-    public setWinchPower(double power) {
-        winch.setPower(WINCH_POWER * power);
+    public void setWinchPower(double power) {
+        winch.setPower(WINCH_RATE * power);
     }
 
     @Override
