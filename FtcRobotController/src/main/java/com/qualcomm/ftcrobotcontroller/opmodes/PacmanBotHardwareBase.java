@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * Created by tdoylend on 2015-10-22.
@@ -95,6 +96,7 @@ public class PacmanBotHardwareBase extends OpMode {
     }
 
     public void drive(double drive_rate, double turn_rate) {
+        drive_rate = -drive_rate;
         drive_rate = limit(drive_rate,-driveClamp,driveClamp);
         turn_rate = limit(turn_rate, -turnClamp, turnClamp);
         drive_rate = exp(drive_rate, driveExponent);
@@ -131,14 +133,14 @@ public class PacmanBotHardwareBase extends OpMode {
         frontRight = hardwareMap.dcMotor.get("front_right");
         rearLeft = hardwareMap.dcMotor.get("rear_left");
         rearRight = hardwareMap.dcMotor.get("rear_right");
-        brush = hardwareMap.dcMotor.get("brush");
+        //brush = hardwareMap.dcMotor.get("brush");
         deviceMode = DcMotorController.DeviceMode.WRITE_ONLY;
         frontLeft.setDirection(DcMotor.Direction.REVERSE);
         frontRight.setDirection(DcMotor.Direction.FORWARD);
         rearLeft.setDirection(DcMotor.Direction.FORWARD);
         rearRight.setDirection(DcMotor.Direction.REVERSE);
-        brush.setDirection(DcMotor.Direction.FORWARD);
-        brush.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
+        //brush.setDirection(DcMotor.Direction.FORWARD);
+        //brush.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
         frontLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
         frontRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
         rearLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
@@ -150,14 +152,14 @@ public class PacmanBotHardwareBase extends OpMode {
         eye = hardwareMap.colorSensor.get("eye");
         setEyeLED(false);
 
-        gamepad = gamepad1;
+        gamepad = new Gamepad();
 
-        sweeper = hardwareMap.servo.get("sweeper");
+        //sweeper = hardwareMap.servo.get("sweeper");
     }
 
-    public void setSweeperPosition(double power) {
-        sweeper.setPosition(power*70.0);
-    }
+    //public void setSweeperPosition(double power) {
+    //    sweeper.setPosition(power*70.0);
+    //}
 
     public void setHookPower(double power) {
         hook.setPower(HOOK_RATE * power);
@@ -178,6 +180,11 @@ public class PacmanBotHardwareBase extends OpMode {
     @Override
     public void loop() {}
 
+    public String getUser() {
+        if (gamepad==gamepad1) return "Driver 1";
+        return "Driver 2";
+    }
+
     public void checkUsers() {
         if (gamepadAllower) {
             if (gamepad2.start) {
@@ -186,6 +193,28 @@ public class PacmanBotHardwareBase extends OpMode {
             }
         }
         if (!gamepad2.start) gamepadAllower=true;
-        if (gamepadOverride == 2) gamepad = gamepad2;
+        if (gamepadOverride >= 2) copyGamepadState(gamepad1, gamepad);
+        else copyGamepadState(gamepad2,gamepad);
+    }
+
+    public void copyGamepadState(Gamepad g1,Gamepad g2) {
+        g2.right_stick_x = g1.right_stick_x;
+        g2.right_stick_y = g1.right_stick_y;
+        g2.left_stick_x  = g1.left_stick_x;
+        g2.left_stick_y  = g1.left_stick_y;
+        g2.right_stick_button = g1.right_stick_button;
+        g2.left_stick_button = g1.left_stick_button;
+        g2.left_bumper = g1.left_bumper;
+        g2.right_bumper = g1.right_bumper;
+        g2.left_trigger = g1.left_trigger;
+        g2.right_trigger = g1.right_trigger;
+        g2.a = g1.a;
+        g2.b = g1.b;
+        g2.x = g1.x;
+        g2.y = g1.y;
+        g2.dpad_left = g1.dpad_left;
+        g2.dpad_right = g1.dpad_right;
+        g2.dpad_up = g1.dpad_up;
+        g2.dpad_down = g1.dpad_down;
     }
 }

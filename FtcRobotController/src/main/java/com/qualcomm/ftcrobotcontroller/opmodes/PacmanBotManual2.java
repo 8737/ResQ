@@ -18,7 +18,7 @@ public class PacmanBotManual2 extends PacmanBotHardwareBase {
 
         setupHardware();
 
-        setSweeperPosition(0);
+        //setSweeperPosition(0);
     }
 
     @Override
@@ -36,12 +36,14 @@ public class PacmanBotManual2 extends PacmanBotHardwareBase {
         //Adjust the eye LED. Remove this during tournament; for testing purposes only.
         setEyeLED(gamepad.start);
 
-        if (gamepad.dpad_left) setSweeperPosition(0);
-        if (gamepad.dpad_right) setSweeperPosition(1);
+        //if (gamepad.dpad_left) setSweeperPosition(0);
+        //if (gamepad.dpad_right) setSweeperPosition(1);
 
         //Now for telemetry
 
         telemetry.addData("Manual Drive","Standard");
+        telemetry.addData("Current Drive",gamepad.left_stick_y);
+        telemetry.addData("Current Turn",gamepad.right_stick_x);
         telemetry.addData("Eye Sees",getColorString(getEyeColor()));
         telemetry.addData("Left Trigger",gamepad.left_trigger);
     }
