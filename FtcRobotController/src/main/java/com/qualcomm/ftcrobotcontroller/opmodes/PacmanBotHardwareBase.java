@@ -127,6 +127,10 @@ public class PacmanBotHardwareBase extends OpMode {
         return value;
     }
 
+    public void stop_drive() {
+        drive(0,0);
+    }
+
     public void setupHardware() {
         frontController = hardwareMap.dcMotorController.get("front_ctrl");
         rearController  = hardwareMap.dcMotorController.get("rear_ctrl");
