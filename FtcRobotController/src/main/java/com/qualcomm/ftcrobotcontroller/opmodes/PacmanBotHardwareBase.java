@@ -15,10 +15,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * You use it to interface to the hardware components.
  *
  * Change log:
+ * 1.0.1 - Fixed controller override bug.
  * 1.0.0 - First version.
  */
 public class PacmanBotHardwareBase extends OpMode {
-    final static public VersionNumber hwbVersion = new VersionNumber(1,0,0);
+    final static public VersionNumber hwbVersion = new VersionNumber(1,0,1);
 
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
@@ -193,8 +194,8 @@ public class PacmanBotHardwareBase extends OpMode {
             }
         }
         if (!gamepad2.start) gamepadAllower=true;
-        if (gamepadOverride >= 2) copyGamepadState(gamepad1, gamepad);
-        else copyGamepadState(gamepad2,gamepad);
+        if (gamepadOverride >= 2) copyGamepadState(gamepad2, gamepad);
+        else copyGamepadState(gamepad1,gamepad);
     }
 
     public void copyGamepadState(Gamepad g1,Gamepad g2) {
