@@ -159,12 +159,12 @@ public class PacmanBotHardwareBase extends OpMode {
 
         gamepad = new Gamepad();
 
-        //sweeper = hardwareMap.servo.get("sweeper");
+        sweeper = hardwareMap.servo.get("sweeper");
     }
 
-    //public void setSweeperPosition(double power) {
-    //    sweeper.setPosition(power*70.0);
-    //}
+    public void setSweeperPosition(double power) {
+        sweeper.setPosition(power*70.0);
+    }
 
     public void setHookPower(double power) {
         hook.setPower(HOOK_RATE * power);
