@@ -15,14 +15,17 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * You use it to interface to the hardware components.
  *
  * Change log:
+ * 1.1.0 - Added sweeper code.
  * 1.0.1 - Fixed controller override bug.
  * 1.0.0 - First version.
  */
 public class PacmanBotHardwareBase extends OpMode {
-    final static public VersionNumber hwbVersion = new VersionNumber(1,0,1);
+    final static public VersionNumber hwbVersion = new VersionNumber(1,1,0);
 
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
+
+    final static double SWEEPER_OFFSET = 0.5;
 
     final static double WINCH_RATE = 1.0;
     final static double HOOK_RATE = 0.25;
@@ -169,7 +172,7 @@ public class PacmanBotHardwareBase extends OpMode {
     }
 
     public void setSweeperPosition(double power) {
-        sweeper.setPosition(power*70.0);
+        sweeper.setPosition(SWEEPER_OFFSET+power);
     }
 
     public void setHookPower(double power) {

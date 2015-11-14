@@ -4,11 +4,12 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
  * Created by tdoylend on 2015-10-31.
  *
  * Change log:
+ * 1.1.0 - Added sweeper code.
  * 1.0.0 - First version.
  */
 
 public class PacmanBotManual2 extends PacmanBotHardwareBase {
-    final static VersionNumber version = new VersionNumber(1,0,0);
+    final static VersionNumber version = new VersionNumber(1,1,0);
 
     @Override
     public void init() {
@@ -35,6 +36,8 @@ public class PacmanBotManual2 extends PacmanBotHardwareBase {
 
         //Adjust the eye LED. Remove this during tournament; for testing purposes only.
         setEyeLED(gamepad.start);
+
+        setSweeperPosition(threeWay(gamepad.dpad_left,gamepad.dpad_right) * .5);
 
         //if (gamepad.dpad_left) setSweeperPosition(0);
         //if (gamepad.dpad_right) setSweeperPosition(1);
