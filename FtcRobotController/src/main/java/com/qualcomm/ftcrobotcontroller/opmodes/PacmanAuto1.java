@@ -28,7 +28,10 @@ public class PacmanAuto1 extends PacmanBotHardwareBase {
         if(timer.time()<3)
         {
             drive(1,0);
-
+        }
+        else if(timer.time()<6)
+        {
+            drive(0,1);
         }
         else
         {

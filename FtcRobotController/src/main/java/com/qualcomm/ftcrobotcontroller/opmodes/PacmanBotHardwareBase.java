@@ -77,8 +77,12 @@ public class PacmanBotHardwareBase extends OpMode {
         double blue = eye.blue();
 
         if (Math.abs(red - blue)>COLOR_DETECTION_THRESHOLD) {
-            if (red > blue) {return ColorDetected.COLOR_RED;}
-            else {return ColorDetected.COLOR_BLUE;}
+            if (red > blue) {
+                return ColorDetected.COLOR_RED;
+            }
+            else {
+                return ColorDetected.COLOR_BLUE;
+            }
         }
         return ColorDetected.COLOR_NEITHER;
     }
@@ -92,8 +96,10 @@ public class PacmanBotHardwareBase extends OpMode {
         return "Error";
     }
 
-    public void setEyeLED(boolean active) {
+    public void setEyeLED(boolean active)
+    {
         eye.enableLed(active);
+
     }
 
     public void drive(double drive_rate, double turn_rate) {
