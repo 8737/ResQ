@@ -4,12 +4,13 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
  * Created by tdoylend on 2015-10-31.
  *
  * Change log:
+ * 1.2.0 - Added thrower code.
  * 1.1.0 - Added sweeper code.
  * 1.0.0 - First version.
  */
 
 public class PacmanBotManual2 extends PacmanBotHardwareBase {
-    final static VersionNumber version = new VersionNumber(1,1,0);
+    final static VersionNumber version = new VersionNumber(1,2,0);
 
     @Override
     public void init() {
@@ -33,6 +34,7 @@ public class PacmanBotManual2 extends PacmanBotHardwareBase {
 
         setHookPower(threeWay(gamepad.left_bumper,gamepad.left_trigger>.5));
         setWinchPower(threeWay(gamepad.right_bumper,gamepad.right_trigger>.5));
+        setThrower(gamepad.dpad_up);
 
         //Adjust the eye LED. Remove this during tournament; for testing purposes only.
         setEyeLED(gamepad.start);
