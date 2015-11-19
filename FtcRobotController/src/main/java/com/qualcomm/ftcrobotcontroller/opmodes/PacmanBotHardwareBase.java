@@ -19,14 +19,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * 1.1.0 - Added sweeper code.
  * 1.0.1 - Fixed controller override bug.
  * 1.0.0 - First version.
- */
+*/
 public class PacmanBotHardwareBase extends OpMode {
     final static public VersionNumber hwbVersion = new VersionNumber(1,2,0);
 
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
 
-    final static double SWEEPER_OFFSET = 0.5;
+    final static double SWEEPER_OFFSET = 0.35;
 
     final static double WINCH_RATE = 1.0;
     final static double HOOK_RATE = 0.25;
@@ -172,9 +172,9 @@ public class PacmanBotHardwareBase extends OpMode {
 
         sweeper = hardwareMap.servo.get("sweeper");
         thrower = hardwareMap.servo.get("thrower");
-        thrower.setPosition(0.75);
+        thrower.setPosition(0.80);
     }
-    public void setThrower(boolean swapper) { thrower.setPosition(swapper ? .05 : .75);}
+    public void setThrower(boolean swapper) { thrower.setPosition(swapper ? .05 : .80);}
 
     public void setSweeperPosition(double power) {
         sweeper.setPosition(SWEEPER_OFFSET+power);
