@@ -6,13 +6,14 @@ public class PacmanAuto1 extends PacmanBotHardwareBase {
     final static VersionNumber version = new VersionNumber(1,0,0);
     boolean done=false;
     ElapsedTime timer=new ElapsedTime();
+    double timeDiffs[];
+
     @Override
     public void init() {
         telemetry.addData("Program", "Pacman Auto");
         telemetry.addData("Version", version.string());
         telemetry.addData("Hardware Base Version", hwbVersion.string());
         setupHardware();
-        double timeDiffs[];
         timeDiffs = new double[3];//amount of time distances
         timeDiffs[0]=2;//time operating 1st instruction
         timeDiffs[1]=1;//time operating 2nd instruction

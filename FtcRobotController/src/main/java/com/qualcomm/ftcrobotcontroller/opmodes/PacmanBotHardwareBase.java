@@ -26,7 +26,7 @@ public class PacmanBotHardwareBase extends OpMode {
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
 
-    final static double SWEEPER_OFFSET = 0.35;
+    final static double SWEEPER_OFFSET = 0.5;
 
     final static double WINCH_RATE = 1.0;
     final static double HOOK_RATE = 0.25;
@@ -177,7 +177,7 @@ public class PacmanBotHardwareBase extends OpMode {
     public void setThrower(boolean swapper) { thrower.setPosition(swapper ? .05 : .80);}
 
     public void setSweeperPosition(double power) {
-        sweeper.setPosition(SWEEPER_OFFSET+power);
+        sweeper.setPosition(SWEEPER_OFFSET+power*0.35);
     }
 
     public void setHookPower(double power) {

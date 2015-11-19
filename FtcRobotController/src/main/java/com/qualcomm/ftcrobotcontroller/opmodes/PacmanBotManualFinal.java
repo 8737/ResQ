@@ -11,6 +11,8 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
     VersionNumber version = new VersionNumber(1,0,0);
 
+    double sweeperSide=1;
+
     @Override
     public void init() {
         telemetry.addData("Program","Ultimate Manual Drive");
@@ -19,8 +21,8 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
         setupHardware();
 
-        setDriveExponent(1.35);
-        setTurnExponent(1.35);
+        //setDriveExponent(1.35);
+        //setTurnExponent(1.35);
     }
 
     @Override
@@ -31,14 +33,21 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
         setFinalRateMultiplier(gamepad.left_stick_button ? 1.0 : 0.5 );
 
-        drive_rate = -gamepad.right_stick_y;
-        turn_rate  = gamepad.left_stick_x;
+        drive_rate = -gamepad.left_stick_y;
+        turn_rate  = gamepad.right_stick_x;
 
         drive(drive_rate,turn_rate);
 
         setHookPower(threeWay(gamepad.left_trigger>0.5,gamepad.left_bumper));
         setWinchPower(threeWay(gamepad.right_trigger>0.5,gamepad.right_bumper));
 
-        setBrushPower(threeWay(gamepad.a,gamepad.b));
+        setBrushPower(threeWay(gamepad.b,gamepad.a));
+
+        setThrower(gamepad.x);
+
+        if (gamepad.dpad_left) sweeperSide=-1;
+        if (gamepad.dpad_right) sweeperSide=1;
+
+        setSweeperPosition(sweeperSide);
     }
 }
