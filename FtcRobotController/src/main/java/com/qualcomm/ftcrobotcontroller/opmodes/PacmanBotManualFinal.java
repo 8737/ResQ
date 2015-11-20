@@ -1,5 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
+import com.qualcomm.robotcore.util.ElapsedTime;
+
 /**
  * Created by tdoylend on 2015-11-19.
  * This is the final manual drive for PacmanBot.
@@ -11,6 +13,15 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
     VersionNumber version = new VersionNumber(1,0,0);
 
+    ElapsedTime autoDeployTimer = new ElapsedTime();
+    final static double AUTO_DEPLOY_TIMEOUT = 10.0; //10 seconds before use of autoDeploy.
+
+    final static double AUTO_DEPLOY_FRONT = -50;
+    final static double AUTO_DEPLOY_REAR = 50;
+    final static double AUTO_DEPLOY_FINAL = 0;
+
+    double autoDeployStage = -1; //Inactive
+
     double sweeperSide=1;
 
     @Override
@@ -20,6 +31,7 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
         telemetry.addData("HWB Version",hwbVersion.string());
 
         setupHardware();
+        autoDeployTimer.reset();
 
         //setDriveExponent(1.35);
         //setTurnExponent(1.35);
@@ -43,11 +55,17 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
         setBrushPower(threeWay(gamepad.b,gamepad.a));
 
+        //This code will later be replaced a the zipline toggle.
         setThrower(gamepad.x);
 
         if (gamepad.dpad_left) sweeperSide=-1;
         if (gamepad.dpad_right) sweeperSide=1;
 
         setSweeperPosition(sweeperSide);
+
+        if (gamepad.y && (autoDeployTimer.time()>AUTO_DEPLOY_TIMEOUT)) { //Auto-deploy
+            autoDeployTimer.reset();
+            autoDeployStage = 0; //Stag
+        }
     }
 }

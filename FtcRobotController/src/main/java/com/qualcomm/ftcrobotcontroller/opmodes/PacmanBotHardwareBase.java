@@ -164,6 +164,7 @@ public class PacmanBotHardwareBase extends OpMode {
 
         winch = hardwareMap.dcMotor.get("winch");
         hook  = hardwareMap.dcMotor.get("hook");
+        hook.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
 
         eye = hardwareMap.colorSensor.get("eye");
         setEyeLED(false);

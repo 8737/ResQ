@@ -56,7 +56,7 @@ public class FtcOpModeRegister implements OpModeRegister {
      */
 
     manager.register("NullOp", NullOp.class);
-    manager.register("PacmanAutoTest", PacmanAutoTest.class);
+    //manager.register("PacmanAutoTest", PacmanAutoTest.class);
 
     //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
     //manager.register("K9TeleOp", K9TeleOp.class);
@@ -64,8 +64,8 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("PushBotAuto", PushBotAuto.class);
     //manager.register ("PushBotManual", PushBotManual.class);
     manager.register("Manual Drive",PacmanBotManualFinal.class);
-    manager.register("Pacman Auto",PacmanAuto1.class);
-
+    //manager.register("Pacman Auto",PacmanAuto1.class);
+    manager.register("Hook Monitor",PacmanBotHookMonitor.class);
 
 
     /*
