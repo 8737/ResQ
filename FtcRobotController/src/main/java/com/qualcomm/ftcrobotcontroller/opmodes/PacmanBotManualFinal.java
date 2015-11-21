@@ -8,7 +8,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * This is the final manual drive for PacmanBot.
  *
  * Change log:
- * 1.1.1 - Adjusted initial sweeper position.
+ * 1.1.2 - Refactored slightly to accommodate new sweeper code.
+ * 1.1.1 - Adjusted initial sweeper position.c
  * 1.1.0 - Added Auto-Deploy.
  * 1.0.0 - First version.
  */
@@ -26,7 +27,7 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
     int autoDeployStage = -1; //Inactive
 
-    double sweeperSide=0;
+    boolean sweeperSide=false;
 
     @Override
     public void init() {
@@ -83,8 +84,8 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
         //Later for zipline toggle.
         setThrower(gamepad.x);
 
-        if (gamepad.dpad_left) sweeperSide=-1;
-        if (gamepad.dpad_right) sweeperSide=1;
+        if (gamepad.dpad_left) sweeperSide=false;
+        if (gamepad.dpad_right) sweeperSide=true;
 
         setSweeperPosition(sweeperSide);
 
