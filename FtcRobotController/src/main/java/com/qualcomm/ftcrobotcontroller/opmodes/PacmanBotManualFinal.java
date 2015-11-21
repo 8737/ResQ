@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * This is the final manual drive for PacmanBot.
  *
  * Change log:
+ * 1.1.5 - Changed auto-deploy for status feed and dangerousity.
  * 1.1.4 - Changed auto-deploy button and made it less destructive.
  * 1.1.3 - Adjusted auto-deploy to make it slightly less destructive.
  * 1.1.2 - Refactored slightly to accommodate new sweeper code.
@@ -91,9 +92,11 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
         setSweeperPosition(sweeperSide);
 
-        if (gamepad.back && (autoDeployTimer.time()>AUTO_DEPLOY_TIMEOUT)) { //Auto-deploy
+        if (gamepad.y && gamepad.start && (autoDeployTimer.time()>AUTO_DEPLOY_TIMEOUT)) { //Auto-deploy
             autoDeployTimer.reset();
             autoDeployStage = 0; //Stage: unwind winch
         }
+        if (autoDeployTimer.time()>AUTO_DEPLOY_TIMEOUT) telemetry.addData("MAD","Ready to Fire");
+        else telemetry.addData("MAD","Reloading");
     }
 }
