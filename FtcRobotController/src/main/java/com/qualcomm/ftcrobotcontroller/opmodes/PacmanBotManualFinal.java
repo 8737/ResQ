@@ -69,9 +69,9 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
                 case 0:
                     setWinchPower(-1);
                     setHookPower(-1);
-                    if (autoDeployTimer.time()>AUTO_DEPLOY_UNWIND) autoDeployStage=2;
+                    if (autoDeployTimer.time()>AUTO_DEPLOY_UNWIND) autoDeployStage=1;
                     break;
-                case 2:
+                case 1:
                     setWinchPower(0);
                     setHookPower(1);
                     if (hook.getCurrentPosition()>=AUTO_DEPLOY_REAR) autoDeployStage=-1;
