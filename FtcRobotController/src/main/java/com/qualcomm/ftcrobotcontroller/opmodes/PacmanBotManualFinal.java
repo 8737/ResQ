@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * This is the final manual drive for PacmanBot.
  *
  * Change log:
+ * 1.1.1 - Adjusted initial sweeper position.
  * 1.1.0 - Added Auto-Deploy.
  * 1.0.0 - First version.
  */
@@ -25,7 +26,7 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
     int autoDeployStage = -1; //Inactive
 
-    double sweeperSide=1;
+    double sweeperSide=0;
 
     @Override
     public void init() {
