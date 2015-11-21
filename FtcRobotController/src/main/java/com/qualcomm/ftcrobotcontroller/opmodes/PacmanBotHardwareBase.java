@@ -15,13 +15,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * You use it to interface to the hardware components.
  *
  * Change log:
+ * 1.2.1 - Slight bugfix in sweeper init.
  * 1.2.0 - Added thrower code.
  * 1.1.0 - Added sweeper code.
  * 1.0.1 - Fixed controller override bug.
  * 1.0.0 - First version.
 */
 public class PacmanBotHardwareBase extends OpMode {
-    final static public VersionNumber hwbVersion = new VersionNumber(1,2,0);
+    final static public VersionNumber hwbVersion = new VersionNumber(1,2,1);
 
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
@@ -174,6 +175,7 @@ public class PacmanBotHardwareBase extends OpMode {
         sweeper = hardwareMap.servo.get("sweeper");
         thrower = hardwareMap.servo.get("thrower");
         thrower.setPosition(0.75);
+        sweeper.setPosition(0.5);
     }
     public void setThrower(boolean swapper) { thrower.setPosition(swapper ? .05 : .75);}
 
