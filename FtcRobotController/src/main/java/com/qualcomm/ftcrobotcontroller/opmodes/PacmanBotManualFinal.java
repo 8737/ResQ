@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * This is the final manual drive for PacmanBot.
  *
  * Change log:
+ * 1.1.6 - Removed cruft
  * 1.1.5 - Changed auto-deploy for status feed and dangerousity.
  * 1.1.4 - Changed auto-deploy button and made it less destructive.
  * 1.1.3 - Adjusted auto-deploy to make it slightly less destructive.
@@ -18,15 +19,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 public class PacmanBotManualFinal extends PacmanBotHardwareBase {
 
-    VersionNumber version = new VersionNumber(1,1,4);
+    VersionNumber version = new VersionNumber(1,1,6);
 
     ElapsedTime autoDeployTimer = new ElapsedTime();
     final static double AUTO_DEPLOY_TIMEOUT = 10.0; //10 seconds before use of autoDeploy.
 
     final static double AUTO_DEPLOY_UNWIND = 3; //Time to unwind winch
-    final static double AUTO_DEPLOY_FRONT = .5; //Time to swing forward
     final static double AUTO_DEPLOY_REAR = 30;
-    final static double AUTO_DEPLOY_FINAL = 0;
 
     int autoDeployStage = -1; //Inactive
 
