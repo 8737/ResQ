@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * This is the final manual drive for PacmanBot.
  *
  * Change log:
+ * 1.1.3 - Adjusted auto-deploy to make it slightly less destructive.
  * 1.1.2 - Refactored slightly to accommodate new sweeper code.
  * 1.1.1 - Adjusted initial sweeper position.c
  * 1.1.0 - Added Auto-Deploy.
@@ -21,8 +22,8 @@ public class PacmanBotManualFinal extends PacmanBotHardwareBase {
     final static double AUTO_DEPLOY_TIMEOUT = 10.0; //10 seconds before use of autoDeploy.
 
     final static double AUTO_DEPLOY_UNWIND = 3; //Time to unwind winch
-    final static double AUTO_DEPLOY_FRONT = 1; //Time to swing forward
-    final static double AUTO_DEPLOY_REAR = 0;
+    final static double AUTO_DEPLOY_FRONT = .667; //Time to swing forward
+    final static double AUTO_DEPLOY_REAR = 15;
     final static double AUTO_DEPLOY_FINAL = 0;
 
     int autoDeployStage = -1; //Inactive
