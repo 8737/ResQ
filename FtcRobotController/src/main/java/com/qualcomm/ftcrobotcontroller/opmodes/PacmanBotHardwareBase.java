@@ -77,7 +77,9 @@ public class PacmanBotHardwareBase extends OpMode {
     public void setMotorExponent(double value){motorExponent=value;}
     public void setFinalRateMultiplier(double value){finalRateMultiplier=value;}
 
-    public void setBrushPower(double power){brush.setPower(power);}
+    public void setBrushPower(double power){
+        brush.setPower(power);
+    }
 
     public ColorDetected getEyeColor(){
         double red = eye.red();
@@ -184,20 +186,25 @@ public class PacmanBotHardwareBase extends OpMode {
     }
 
     public void setPusher(boolean pusherSide) {
+
         pusher.setPosition(pusherSide ? 0.1 : 1.0);
     }
 
-    public void setThrower(boolean swapper) { thrower.setPosition(swapper ? .05 : .75);}
+    public void setThrower(boolean swapper) {
+        thrower.setPosition(swapper ? .05 : .75);
+    }
 
     public void setSweeperPosition(boolean sweeperSide) {
         sweeper.setPosition(sweeperSide ? .35 : .05);
     }
 
     public void setHookPower(double power) {
+
         hook.setPower(HOOK_RATE * power);
     }
 
     public void setWinchPower(double power) {
+
         winch.setPower(WINCH_RATE * power);
     }
 
