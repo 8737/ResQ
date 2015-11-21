@@ -15,6 +15,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * You use it to interface to the hardware components.
  *
  * Change log:
+ * 1.4.1 - Fixed getUser().
  * 1.4.0 - Refactored sweeper code.
  * 1.3.0 - Added pusher code.
  * 1.2.1 - Slight bugfix in sweeper init.
@@ -24,7 +25,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * 1.0.0 - First version.
 */
 public class PacmanBotHardwareBase extends OpMode {
-    final static public VersionNumber hwbVersion = new VersionNumber(1,4,0);
+    final static public VersionNumber hwbVersion = new VersionNumber(1,4,1);
 
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
@@ -212,7 +213,7 @@ public class PacmanBotHardwareBase extends OpMode {
     public void loop() {}
 
     public String getUser() {
-        if (gamepad==gamepad1) return "Driver 1";
+        if (gamepadOverride < 2) return "Driver 1";
         return "Driver 2";
     }
 
