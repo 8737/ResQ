@@ -20,6 +20,5 @@ public class PacmanBotHookMonitor extends PacmanBotHardwareBase {
     public void loop() {
         hook.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
         telemetry.addData("Hook Reading",hook.getCurrentPosition());
-
     }
 }
