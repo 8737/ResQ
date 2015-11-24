@@ -15,6 +15,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * You use it to interface to the hardware components.
  *
  * Change log:
+ * 1.5.0 - Begun refactor.
  * 1.4.2 - Added LEFT and RIGHT constants.
  * 1.4.1 - Fixed getUser().
  * 1.4.0 - Refactored sweeper code.
@@ -31,9 +32,6 @@ public class PacmanBotHardwareBase extends OpMode {
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
 
-    final static double WINCH_RATE = 1.0;
-    final static double HOOK_RATE = 0.25;
-
     public enum ColorDetected {COLOR_RED,COLOR_BLUE,COLOR_NEITHER}
 
     DcMotorController.DeviceMode deviceMode;
@@ -44,9 +42,6 @@ public class PacmanBotHardwareBase extends OpMode {
     DcMotor frontRight;
     DcMotor rearLeft;
     DcMotor rearRight;
-
-    DcMotor winch;
-    DcMotor hook;
 
     Servo sweeper;
     Servo thrower;
@@ -109,11 +104,7 @@ public class PacmanBotHardwareBase extends OpMode {
         return "Error";
     }
 
-    public void setEyeLED(boolean active)
-    {
-        eye.enableLed(active);
-
-    }
+    public void setEyeLED(boolean active) {eye.enableLed(active);}
 
     public void drive(double drive_rate, double turn_rate) {
         drive_rate = -drive_rate;
@@ -170,10 +161,6 @@ public class PacmanBotHardwareBase extends OpMode {
         rearLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
         rearRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
 
-        winch = hardwareMap.dcMotor.get("winch");
-        hook  = hardwareMap.dcMotor.get("hook");
-        hook.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-
         eye = hardwareMap.colorSensor.get("eye");
         setEyeLED(false);
 
@@ -188,20 +175,14 @@ public class PacmanBotHardwareBase extends OpMode {
         thrower.setPosition(swapper ? .05 : .75);
     }
 
-    public void setHookPower(double power) {
-
-        hook.setPower(HOOK_RATE * power);
-    }
-
-    public void setWinchPower(double power) {
-
-        winch.setPower(WINCH_RATE * power);
-    }
-
     public double threeWay(boolean a,boolean b) {
         if (a) return -1.0;
         if (b) return 1.0;
         return 0;
+    }
+
+    public void setSweeper(double position) {
+        sweeper.setPosition(position+.5);
     }
 
     @Override
