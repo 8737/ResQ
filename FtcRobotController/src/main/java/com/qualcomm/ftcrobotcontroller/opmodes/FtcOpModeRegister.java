@@ -66,7 +66,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("Manual Drive",PacmanBotManualFinal.class);
     //manager.register("Pacman Auto",PacmanAuto1.class);
     manager.register("Hook Monitor",PacmanBotHookMonitor.class);
-
+    manager.register("Color Sensor Test",ColorSensorTest.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.

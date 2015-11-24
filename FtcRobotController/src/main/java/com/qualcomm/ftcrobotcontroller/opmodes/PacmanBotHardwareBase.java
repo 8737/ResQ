@@ -183,7 +183,7 @@ public class PacmanBotHardwareBase extends OpMode {
         sweeper = hardwareMap.servo.get("sweeper");
         thrower = hardwareMap.servo.get("thrower");
         thrower.setPosition(0.75);
-        sweeper.setPosition(.05);
+        sweeper.setPosition(0.75);
 
         pusher = hardwareMap.servo.get("pusher");
         pusher.setPosition(1.0);
