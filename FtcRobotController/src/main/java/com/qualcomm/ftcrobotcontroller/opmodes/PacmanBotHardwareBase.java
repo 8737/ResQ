@@ -186,7 +186,7 @@ public class PacmanBotHardwareBase extends OpMode {
         sweeper.setPosition(0.75);
 
         pusher = hardwareMap.servo.get("pusher");
-        pusher.setPosition(1.0);
+        pusher.setPosition(0.75);
     }
 
     public void setPusher(boolean pusherSide) {
