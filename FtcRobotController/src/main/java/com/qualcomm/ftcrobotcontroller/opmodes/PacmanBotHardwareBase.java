@@ -50,7 +50,7 @@ public class PacmanBotHardwareBase extends OpMode {
 
     Servo sweeper;
     Servo thrower;
-    Servo pusher;
+    //Servo pusher;
 
     Gamepad gamepad;
     int gamepadOverride=0;
@@ -185,13 +185,13 @@ public class PacmanBotHardwareBase extends OpMode {
         thrower.setPosition(0.75);
         sweeper.setPosition(0.75);
 
-        pusher = hardwareMap.servo.get("pusher");
-        pusher.setPosition(0.75);
+        //pusher = hardwareMap.servo.get("pusher");
+        //pusher.setPosition(0.75);
     }
 
     public void setPusher(boolean pusherSide) {
 
-        pusher.setPosition(pusherSide ? 0.1 : 1.0);
+        //pusher.setPosition(pusherSide ? 0.1 : 1.0);
     }
 
     public void setThrower(boolean swapper) {

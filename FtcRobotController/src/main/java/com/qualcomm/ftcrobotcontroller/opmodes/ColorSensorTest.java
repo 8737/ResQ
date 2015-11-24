@@ -16,14 +16,15 @@ public class ColorSensorTest extends PacmanBotHardwareBase {
 
     //@Override
     public void main() {
-        timer.startTime();
-        sweeper.setPosition(0.7);
+        sweeper.setPosition(0.1);
         if (getColorString(getEyeColor()) == "RED") {
-            while (timer.time() < 0.1) {
-                drive(0.1, 0);
-            }
-            drive(0, 0);
+            sweeper.setPosition(-0.1);
         }
+        timer.startTime();
+        drive(0.1, 0);
+        while (timer.time() < 0.1) {
+        }
+        drive(0, 0);
     }
         /*
     }
