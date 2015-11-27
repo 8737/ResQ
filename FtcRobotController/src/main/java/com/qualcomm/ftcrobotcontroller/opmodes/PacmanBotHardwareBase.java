@@ -86,9 +86,9 @@ public class PacmanBotHardwareBase extends OpMode {
     }
 
     public ColorDetected getEyeColor(){
-        double red = eye.red();
-        double green = eye.green();
-        double blue = eye.blue();
+        int red = eye.red();
+        int green = eye.green();
+        int blue = eye.blue();
 
         if (Math.abs(red - blue)>COLOR_DETECTION_THRESHOLD) {
             if (red > blue) {
@@ -183,18 +183,18 @@ public class PacmanBotHardwareBase extends OpMode {
         sweeper = hardwareMap.servo.get("sweeper");
         thrower = hardwareMap.servo.get("thrower");
         thrower.setPosition(0.75);
-        sweeper.setPosition(0.75);
+        sweeper.setPosition(0.53);
 
         //pusher = hardwareMap.servo.get("pusher");
-        //pusher.setPosition(0.75);
+        //pusher.setPosition(0.0);
     }
 
-    public void setPusher(boolean pusherSide) {
-
-        //pusher.setPosition(pusherSide ? 0.1 : 1.0);
-    }
+//    public void setPusher(boolean pusherSide) {
+//        pusher.setPosition(pusherSide ? 0.1 : 1.0);
+//    }
 
     public void setThrower(boolean swapper) {
+
         thrower.setPosition(swapper ? .05 : .75);
     }
 
