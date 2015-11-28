@@ -197,6 +197,8 @@ public class PacmanBotHardwareBase extends OpMode {
 //        pusher.setPosition(pusherSide ? 0.1 : 1.0);
 //    }
 
+    public void setBelt(double power) {belt.setPower(power);}
+
     public void setThrower(boolean swapper) {
 
         thrower.setPosition(swapper ? .05 : .75);
@@ -206,7 +208,7 @@ public class PacmanBotHardwareBase extends OpMode {
         sweeper.setPosition(sweeperSide ? .35 : .05);
     }
 
-    public void setWinchPower(double power) {
+    public void setWinch(double power) {
 
         winch.setPower(WINCH_RATE * power);
     }
