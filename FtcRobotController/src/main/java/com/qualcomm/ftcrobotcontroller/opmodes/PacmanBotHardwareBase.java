@@ -46,10 +46,11 @@ public class PacmanBotHardwareBase extends OpMode {
     DcMotor rearRight;
 
     DcMotor winch;
-    DcMotor hook;
+    //DcMotor hook;
 
     Servo sweeper;
     Servo thrower;
+    Servo release;
     //Servo pusher;
 
     Gamepad gamepad;
@@ -172,8 +173,8 @@ public class PacmanBotHardwareBase extends OpMode {
         rearRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
 
         winch = hardwareMap.dcMotor.get("winch");
-        hook  = hardwareMap.dcMotor.get("hook");
-        hook.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        //hook  = hardwareMap.dcMotor.get("hook");
+        //hook.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
 
         eye = hardwareMap.colorSensor.get("eye");
         setEyeLED(false);
@@ -182,8 +183,10 @@ public class PacmanBotHardwareBase extends OpMode {
 
         sweeper = hardwareMap.servo.get("sweeper");
         thrower = hardwareMap.servo.get("thrower");
+        release = hardwareMap.servo.get("hook_release");
         thrower.setPosition(0.75);
         sweeper.setPosition(0.53);
+        release.setPosition(0.53);
 
         //pusher = hardwareMap.servo.get("pusher");
         //pusher.setPosition(0.0);
@@ -202,14 +205,13 @@ public class PacmanBotHardwareBase extends OpMode {
         sweeper.setPosition(sweeperSide ? .35 : .05);
     }
 
-    public void setHookPower(double power) {
-
-        hook.setPower(HOOK_RATE * power);
-    }
-
     public void setWinchPower(double power) {
 
         winch.setPower(WINCH_RATE * power);
+    }
+
+    public void releaseHook() {
+        release.setPosition(0);
     }
 
     public double threeWay(boolean a,boolean b) {
