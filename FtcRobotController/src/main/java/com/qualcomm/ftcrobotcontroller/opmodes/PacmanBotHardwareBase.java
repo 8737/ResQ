@@ -34,7 +34,6 @@ public class PacmanBotHardwareBase extends OpMode {
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
 
     final static double WINCH_RATE = 1.0;
-    //final static double HOOK_RATE = 0.25;
 
     public enum ColorDetected {COLOR_RED,COLOR_BLUE,COLOR_NEITHER}
 
@@ -53,7 +52,6 @@ public class PacmanBotHardwareBase extends OpMode {
     Servo sweeper;
     Servo thrower;
     Servo release;
-    //Servo pusher;
 
     Gamepad gamepad;
     int gamepadOverride=0;
@@ -151,12 +149,12 @@ public class PacmanBotHardwareBase extends OpMode {
     }
 
     public void stop_drive() {
-        drive(0,0);
+        drive(0, 0);
     }
 
     public void setupHardware() {
         frontController = hardwareMap.dcMotorController.get("front_ctrl");
-        rearController  = hardwareMap.dcMotorController.get("rear_ctrl");
+        rearController = hardwareMap.dcMotorController.get("rear_ctrl");
         frontLeft = hardwareMap.dcMotor.get("front_left");
         frontRight = hardwareMap.dcMotor.get("front_right");
         rearLeft = hardwareMap.dcMotor.get("rear_left");
@@ -175,7 +173,7 @@ public class PacmanBotHardwareBase extends OpMode {
         rearRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
 
         winch = hardwareMap.dcMotor.get("winch");
-        belt  = hardwareMap.dcMotor.get("belt");
+        belt = hardwareMap.dcMotor.get("belt");
         //hook.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
 
         eye = hardwareMap.colorSensor.get("eye");
@@ -189,20 +187,6 @@ public class PacmanBotHardwareBase extends OpMode {
         thrower.setPosition(0.75);
         sweeper.setPosition(0.53);
         release.setPosition(0.53);
-
-        //pusher = hardwareMap.servo.get("pusher");
-        //pusher.setPosition(0.0);
-    }
-
-//    public void setPusher(boolean pusherSide) {
-//        pusher.setPosition(pusherSide ? 0.1 : 1.0);
-//    }
-
-    public void setBelt(double power) {belt.setPower(power);}
-
-    public void setThrower(boolean swapper) {
-
-        thrower.setPosition(swapper ? .05 : .75);
     }
 
     public void setSweeperPosition(boolean sweeperSide) {
