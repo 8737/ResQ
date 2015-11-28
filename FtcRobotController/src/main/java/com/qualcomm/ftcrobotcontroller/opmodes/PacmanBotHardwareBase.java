@@ -34,7 +34,9 @@ public class PacmanBotHardwareBase extends OpMode {
 
     final static double WINCH_RATE = 1.0;
 
-    public enum ColorDetected {COLOR_RED,COLOR_BLUE,COLOR_NEITHER}
+    public enum ColorDetected {
+        COLOR_RED,COLOR_BLUE,COLOR_NEITHER
+    }
 
     DcMotorController.DeviceMode deviceMode;
     DcMotorController frontController;
@@ -143,7 +145,9 @@ public class PacmanBotHardwareBase extends OpMode {
     public double exp(double value, double exponent){
         boolean negative = (value<0);
         value = Math.abs(Math.pow(value,exponent));
-        if (negative) {return -value;}
+        if (negative) {
+            return -value;
+        }
         return value;
     }
 
@@ -173,7 +177,6 @@ public class PacmanBotHardwareBase extends OpMode {
 
         winch = hardwareMap.dcMotor.get("winch");
         belt = hardwareMap.dcMotor.get("belt");
-        //hook.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
 
         eye = hardwareMap.colorSensor.get("eye");
         setEyeLED(false);
