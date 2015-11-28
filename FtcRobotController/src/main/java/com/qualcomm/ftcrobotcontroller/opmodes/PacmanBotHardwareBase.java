@@ -189,6 +189,8 @@ public class PacmanBotHardwareBase extends OpMode {
         release.setPosition(0.53);
     }
 
+    public void setBelt(double power) {belt.setPower(power);}
+
     public void setSweeperPosition(boolean sweeperSide) {
         sweeper.setPosition(sweeperSide ? .35 : .05);
     }

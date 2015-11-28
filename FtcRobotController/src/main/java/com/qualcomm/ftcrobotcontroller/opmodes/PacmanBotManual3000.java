@@ -29,5 +29,8 @@ public class PacmanBotManual3000 extends PacmanBotHardwareBase {
         double turn_rate  = gamepad.right_stick_x;
 
         drive(drive_rate,turn_rate);
+
+        setBrush(threeWay(gamepad.a,gamepad.b));
+        setBelt()
     }
 }
