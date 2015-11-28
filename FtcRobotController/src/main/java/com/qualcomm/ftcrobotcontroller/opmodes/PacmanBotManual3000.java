@@ -18,4 +18,16 @@ public class PacmanBotManual3000 extends PacmanBotHardwareBase {
 
         setupHardware();
     }
+
+    @Override
+    public void loop() {
+        checkUsers();
+
+        setFinalRateMultiplier(gamepad.left_stick_button ? 1.0 : 0.25);
+
+        double drive_rate = -gamepad.left_stick_y;
+        double turn_rate  = gamepad.right_stick_x;
+
+        drive(drive_rate,turn_rate);
+    }
 }

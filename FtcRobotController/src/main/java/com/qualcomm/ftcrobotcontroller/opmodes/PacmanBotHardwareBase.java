@@ -82,7 +82,7 @@ public class PacmanBotHardwareBase extends OpMode {
     public void setMotorExponent(double value){motorExponent=value;}
     public void setFinalRateMultiplier(double value){finalRateMultiplier=value;}
 
-    public void setBrushPower(double power){
+    public void setBrush(double power){
         brush.setPower(power);
     }
 
