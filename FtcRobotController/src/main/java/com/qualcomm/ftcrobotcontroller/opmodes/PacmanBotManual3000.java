@@ -31,6 +31,8 @@ public class PacmanBotManual3000 extends PacmanBotHardwareBase {
         drive(drive_rate,turn_rate);
 
         setBrush(threeWay(gamepad.a,gamepad.b));
-        setBelt()
+        setBelt(threeWay(gamepad.dpad_left,gamepad.dpad_right));
+
+        if (gamepad.x) releaseHook();
     }
 }
