@@ -131,7 +131,7 @@ public class MRRGBExample extends LinearOpMode {
 
       // convert the RGB values to HSV values.
       //Color.RGBToHSV((sensorRGB.red() * 8), (sensorRGB.green() * 8), (sensorRGB.blue() * 8), hsvValues);
-      Color.RGBToHSV(sensorRGB.red()*8, sensorRGB.green()*8, sensorRGB.blue()*8, hsvValues);
+      Color.RGBToHSV(sensorRGB.red() * 8, sensorRGB.green() * 8, sensorRGB.blue() * 8, hsvValues);
 
       // send the info back to driver station using telemetry function.
       telemetry.addData("Clear", sensorRGB.alpha());
@@ -139,6 +139,11 @@ public class MRRGBExample extends LinearOpMode {
       telemetry.addData("Green", sensorRGB.green());
       telemetry.addData("Blue ", sensorRGB.blue());
       telemetry.addData("Hue", hsvValues[0]);
+      telemetry.addData("- alpha ", String.format("%d", new Object[]{Integer.valueOf(sensorRGB.alpha())}));
+      telemetry.addData("- red   ", String.format("%d", new Object[]{Integer.valueOf(sensorRGB.red())}));
+      telemetry.addData("- green ", String.format("%d", new Object[]{Integer.valueOf(sensorRGB.green())}));
+      telemetry.addData("- blue  ", String.format("%d", new Object[]{Integer.valueOf(sensorRGB.blue())}));
+      telemetry.addData("- argb  ", String.format("%d", new Object[]{Integer.valueOf(sensorRGB.argb())}));
 
       // change the background color to match the color detected by the RGB sensor.
       // pass a reference to the hue, saturation, and value array as an argument
