@@ -32,7 +32,7 @@ public class PacmanBotHardwareBase extends OpMode {
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
 
     final static double WINCH_RATE = 1.0;
-    final static double HOOK_RATE = 0.25;
+    //final static double HOOK_RATE = 0.25;
 
     public enum ColorDetected {COLOR_RED,COLOR_BLUE,COLOR_NEITHER}
 
