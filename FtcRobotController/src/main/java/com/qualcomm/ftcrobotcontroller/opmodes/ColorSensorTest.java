@@ -22,7 +22,6 @@ public class ColorSensorTest extends PacmanBotHardwareBase {
     public void loop() {
         if(iterations<5) {
             sweeper.setPosition(0.5);
-            //eye.enableLed(true);
             red += eye.red();
             blue += eye.blue();
             String sr = String.format("%d", red);
@@ -43,7 +42,6 @@ public class ColorSensorTest extends PacmanBotHardwareBase {
         }
         else if(iterations<11 && checkRed) {
             sweeper.setPosition(0.4);
-            //eye.enableLed(true);
             red += eye.red();
             blue += eye.blue();
             String sr = String.format("%d", red);
@@ -67,23 +65,6 @@ public class ColorSensorTest extends PacmanBotHardwareBase {
             sweeper.setPosition(0.6);
             thrower.setPosition(0);
         }
-
-//            if (red1 - blue1 > 0.25) {
-//                sweeper.setPosition(0.45);
-//            }
-//            else{
-//                sweeper.setPosition(0.53);
-//            }
-//            timer.startTime();
-//            done=true;
-        /*else if(timer.time() > 4.0)
-        {
-            drive(0,0);
-        }
-        else if(timer.time()>2.0)
-        {
-            drive(0.3,0);
-        }*/
         iterations++;
     }
 }
