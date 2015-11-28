@@ -38,11 +38,7 @@ public class FtcOpModeRegister implements OpModeRegister {
   public void register(OpModeManager manager) {
     manager.register("NullOp", NullOp.class);
     manager.register("Color Sensor Test",ColorSensorTest.class);
-<<<<<<< HEAD
     manager.register("Thing",MRRGBExample.class);
-=======
     manager.register("Manual Drive 3000",PacmanBotManual3000.class);
-
->>>>>>> faabd716cc7162591d5af280d1796c92a641e14f
   }
 }
