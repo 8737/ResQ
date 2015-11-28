@@ -65,7 +65,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("PushBotManual", PushBotManual.class);
     //manager.register("Manual Drive",PacmanBotManualFinal.class);
     //manager.register("Pacman Auto",PacmanAuto1.class);
-    manager.register("Hook Monitor",PacmanBotHookMonitor.class);
+    //manager.register("Hook Monitor",PacmanBotHookMonitor.class);
     manager.register("Color Sensor Test",ColorSensorTest.class);
     manager.register("Thing",MRRGBExample.class);
 
