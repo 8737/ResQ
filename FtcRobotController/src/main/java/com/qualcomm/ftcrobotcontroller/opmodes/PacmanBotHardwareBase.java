@@ -15,6 +15,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * You use it to interface to the hardware components.
  *
  * Change log:
+ * 1.5.0 - Added belt code
  * 1.4.3 - Refactor, added new code.
  * 1.4.2 - Added LEFT and RIGHT constants.
  * 1.4.1 - Fixed getUser().
@@ -27,7 +28,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * 1.0.0 - First version.
 */
 public class PacmanBotHardwareBase extends OpMode {
-    final static public VersionNumber hwbVersion = new VersionNumber(1,4,3);
+    final static public VersionNumber hwbVersion = new VersionNumber(1,5,0);
 
     final static double REAR_MULTIPLIER = 0.667;
     final static double COLOR_DETECTION_THRESHOLD = 0.25;
